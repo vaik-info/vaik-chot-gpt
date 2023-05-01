@@ -3,7 +3,7 @@ import os
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 
-def inference(input_model_dir_path, test_input_file_path, model_name='t5-small', input_prefix='input:', output_prefix='output:', max_length=512) :
+def inference(input_model_dir_path, test_input_file_path, model_name='t5-small', input_prefix='input:', output_prefix='output:') :
     model = T5ForConditionalGeneration.from_pretrained(input_model_dir_path)
     tokenizer = T5Tokenizer.from_pretrained(model_name)
 
@@ -15,15 +15,12 @@ def inference(input_model_dir_path, test_input_file_path, model_name='t5-small',
             input_text = input_text.replace(input_prefix, "").strip()
             input_tokenized = tokenizer.encode_plus(
                 input_text,
-                max_length=max_length,
-                padding="max_length",
-                truncation=True,
+                padding="longest",
                 return_tensors="pt"
             )
             output = model.generate(
                 input_ids=input_tokenized["input_ids"],
                 attention_mask=input_tokenized["attention_mask"],
-                max_length=max_length,
                 num_return_sequences=1
             )
             output_text = output_text.strip()
@@ -36,9 +33,9 @@ def inference(input_model_dir_path, test_input_file_path, model_name='t5-small',
 
 def main():
     parser = argparse.ArgumentParser(description='main')
-    parser.add_argument('--input_model_dir_path', type=str, default='~/.grave/vaik_chot_gpt/mnist_model/model')
+    parser.add_argument('--input_model_dir_path', type=str, default='~/.vaik_chot_gpt/mnist_model/model')
     parser.add_argument('--test_input_file_path', type=str,
-                        default='~/.grave/vaik_chot_gpt/dataset/mnist_valid.txt')
+                        default='~/.vaik-mnist-text-dataset/dataset/mnist_valid.txt')
     parser.add_argument('--model_name', type=str, default='t5-small')
     args = parser.parse_args()
 

@@ -36,13 +36,13 @@ def train(train_input_file_path, test_input_file_path, output_dir_path, model_na
 def main():
     parser = argparse.ArgumentParser(description='main')
     parser.add_argument('--train_input_file_path', type=str,
-                        default='~/.grave/vaik_chot_gpt/dataset/mnist_train.txt')
+                        default='~/.vaik-mnist-text-dataset/dataset/mnist_train.txt')
     parser.add_argument('--test_input_file_path', type=str,
-                        default='~/.grave/vaik_chot_gpt/dataset/mnist_valid.txt')
-    parser.add_argument('--output_dir_path', type=str, default='~/.grave/vaik_chot_gpt/mnist_model/')
+                        default='~/.vaik-mnist-text-dataset/dataset/mnist_valid.txt')
+    parser.add_argument('--output_dir_path', type=str, default='~/.vaik_chot_gpt/mnist_model/')
     parser.add_argument('--model_name', type=str, default='t5-small')
     parser.add_argument('--num_train_epochs', type=int, default=10)
-    parser.add_argument('--per_device_train_batch_size', type=int, default=4)
+    parser.add_argument('--per_device_train_batch_size', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=3e-5)
     parser.add_argument('--weight_decay', type=float, default=0.01)
 
