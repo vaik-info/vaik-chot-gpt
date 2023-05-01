@@ -2,7 +2,7 @@ import argparse
 import os
 from transformers import T5Tokenizer, T5ForConditionalGeneration, Seq2SeqTrainingArguments, Seq2SeqTrainer, DataCollatorForSeq2Seq
 
-from text_dataset import TextDataset
+from vaik_chot_gpt.text_dataset import TextDataset
 
 def train(train_input_file_path, test_input_file_path, output_dir_path, model_name='t5-small', num_train_epochs=10, per_device_train_batch_size=4,
           learning_rate=3e-5, weight_decay=0.01):
@@ -36,10 +36,10 @@ def train(train_input_file_path, test_input_file_path, output_dir_path, model_na
 def main():
     parser = argparse.ArgumentParser(description='main')
     parser.add_argument('--train_input_file_path', type=str,
-                        default='~/.grave/lazy_baseline_investigator/dataset/mnist_train.txt')
+                        default='~/.grave/vaik_chot_gpt/dataset/mnist_train.txt')
     parser.add_argument('--test_input_file_path', type=str,
-                        default='~/.grave/lazy_baseline_investigator/dataset/mnist_valid.txt')
-    parser.add_argument('--output_dir_path', type=str, default='~/.grave/lazy_baseline_investigator/mnist_model/')
+                        default='~/.grave/vaik_chot_gpt/dataset/mnist_valid.txt')
+    parser.add_argument('--output_dir_path', type=str, default='~/.grave/vaik_chot_gpt/mnist_model/')
     parser.add_argument('--model_name', type=str, default='t5-small')
     parser.add_argument('--num_train_epochs', type=int, default=10)
     parser.add_argument('--per_device_train_batch_size', type=int, default=4)

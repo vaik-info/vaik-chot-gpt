@@ -36,9 +36,9 @@ def inference(input_model_dir_path, test_input_file_path, model_name='t5-small',
 
 def main():
     parser = argparse.ArgumentParser(description='main')
-    parser.add_argument('--input_model_dir_path', type=str, default='~/.grave/lazy_baseline_investigator/mnist_model/model')
+    parser.add_argument('--input_model_dir_path', type=str, default='~/.grave/vaik_chot_gpt/mnist_model/model')
     parser.add_argument('--test_input_file_path', type=str,
-                        default='~/.grave/lazy_baseline_investigator/dataset/mnist_valid.txt')
+                        default='~/.grave/vaik_chot_gpt/dataset/mnist_valid.txt')
     parser.add_argument('--model_name', type=str, default='t5-small')
     args = parser.parse_args()
 
